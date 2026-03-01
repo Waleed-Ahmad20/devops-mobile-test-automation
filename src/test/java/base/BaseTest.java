@@ -14,8 +14,18 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+/**
+ * Base test class that handles the lifecycle of the Appium driver.
+ * All test classes should extend this class to ensure the driver is initialized
+ * before tests run and quit after tests complete.
+ */
 public class BaseTest {
 
+    /**
+     * Initializes the Appium driver before any tests in the class run.
+     * Maps parameters from testng.xml, defaulting to ApiDemos settings if not provided.
+     * Skips tests if the Appium server is unreachable.
+     */
     @BeforeClass(alwaysRun = true)
     @Parameters({"appPackage", "appActivity", "appPath", "hubUrl"})
     public void setUp(
