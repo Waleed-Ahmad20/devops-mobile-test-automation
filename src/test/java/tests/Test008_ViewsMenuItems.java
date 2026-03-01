@@ -16,7 +16,7 @@ public class Test008_ViewsMenuItems extends BaseTest {
         ViewsPage viewsPage = new ViewsPage();
         int menuItemCount = viewsPage.getMenuItemCount();
         
-        Assert.assertGreaterThan(menuItemCount, 0, 
+        Assert.assertTrue(menuItemCount > 0, 
             "Views page should have at least one menu item");
         System.out.println("✓ Test 008 PASSED: Found " + menuItemCount + " menu items");
     }

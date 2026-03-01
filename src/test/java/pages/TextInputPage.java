@@ -4,7 +4,6 @@ import base.DriverFactory;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.Keys;
 
 public class TextInputPage {
     private AndroidDriver driver = DriverFactory.getDriver();

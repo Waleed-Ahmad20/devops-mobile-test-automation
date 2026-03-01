@@ -27,11 +27,6 @@
       <artifactId>java-client</artifactId>
       <version>${appium.java.client}</version>
     </dependency>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>${selenium.version}</version>
-    </dependency>
   </dependencies>
 
   <build>

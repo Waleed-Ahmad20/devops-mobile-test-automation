@@ -1,8 +1,7 @@
 package base;
 
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import io.appium.java_client.android.options.UiAutomator2Options;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,22 +12,21 @@ public class DriverFactory {
 
     public static void initDriver(String appPackage, String appActivity, String appPath, String hubUrl)
             throws MalformedURLException {
-        DesiredCapabilities caps = new DesiredCapabilities();
 
-        caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
-        caps.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
+        UiAutomator2Options options = new UiAutomator2Options()
+                .setPlatformName("Android")
+                .setAutomationName("UiAutomator2")
+                .setDeviceName("emulator-5554")
+                .setNewCommandTimeout(Duration.ofSeconds(60));
 
         if (appPath != null && !appPath.isEmpty()) {
-            caps.setCapability(MobileCapabilityType.APP, appPath);
+            options.setApp(appPath);
         } else {
-            caps.setCapability(MobileCapabilityType.APP_PACKAGE, appPackage);
-            caps.setCapability(MobileCapabilityType.APP_ACTIVITY, appActivity);
+            options.setAppPackage(appPackage);
+            options.setAppActivity(appActivity);
         }
 
-        caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 60);
-
-        driver = new AndroidDriver(new URL(hubUrl), caps);
+        driver = new AndroidDriver(new URL(hubUrl), options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         System.out.println("✓ AndroidDriver initialized successfully");

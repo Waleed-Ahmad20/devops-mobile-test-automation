@@ -16,7 +16,7 @@ public class Test005_MultipleCheckboxes extends BaseTest {
         ControlsPage controlsPage = new ControlsPage();
         int checkboxCount = controlsPage.getCheckboxCount();
         
-        Assert.assertGreaterThan(checkboxCount, 0, 
+        Assert.assertTrue(checkboxCount > 0, 
             "At least one checkbox should be present");
         System.out.println("✓ Test 005 PASSED: Found " + checkboxCount + " checkboxes");
     }
