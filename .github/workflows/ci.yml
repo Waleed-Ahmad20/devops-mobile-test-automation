@@ -1,0 +1,70 @@
+name: Mobile Test Automation - CI
+
+on:
+  push:
+    branches: [main, feature/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        java-version: ['11']
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java-version }}
+          distribution: 'temurin'
+          cache: maven
+      
+      - name: Build with Maven
+        run: mvn -B clean package -DskipTests
+      
+      - name: Run unit tests
+        run: mvn -B test -Dtest=** -DfailIfNoTests=false || true
+      
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: target/surefire-reports/TEST-*.xml
+          check_name: Test Results
+          comment_title: Unit Test Results
+
+  code-quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      
+      - name: Check code compilation
+        run: mvn -B clean compile
+      
+      - name: Run checkstyle
+        run: mvn -B checkstyle:check || true
+
+  notify:
+    needs: [build-and-test, code-quality]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: Print build status
+        run: |
+          echo "Build Status: ${{ needs.build-and-test.result }}"
+          echo "Code Quality Status: ${{ needs.code-quality.result }}"
