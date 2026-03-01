@@ -211,45 +211,6 @@ mvn test
 <parameter name="hubUrl" value="http://127.0.0.1:4723/wd/hub"/>
 ```
 
----
-
-## 🔄 Git Workflow & Branch Protection
-
-This project enforces professional Git practices:
-
-### Branch Protection Rules
-- All commits must be on **feature branches** (not `main`)
-- PRs require **at least 1 approval** before merge
-- **Status checks** (CI pipeline) must pass
-- No direct pushes to `main`
-
-### Feature Branch Workflow
-
-```bash
-# Create feature branch
-git checkout -b feature/your-feature-name
-
-# Make changes and commit
-git add .
-git commit -m "feat: add description"
-
-# Push to remote
-git push origin feature/your-feature-name
-
-# Open PR on GitHub and wait for approval
-```
-
-### Commit Message Convention
-```
-feat: Add new feature
-fix: Fix a bug
-chore: Update dependencies
-docs: Update documentation
-test: Add test cases
-```
-
----
-
 ## 🤖 GitHub Actions CI Pipeline
 
 The project includes automated CI using **GitHub Actions**:
@@ -303,12 +264,6 @@ public class HomePage {
 }
 ```
 
-**Benefits:**
-- Easy to maintain: change locator in one place
-- Reusable: multiple tests can use same page object
-- Readable: test code is clear and descriptive
-- Scalable: add new pages without modifying tests
-
 ---
 
 ## 📊 Test Execution Evidence
@@ -327,23 +282,6 @@ mvn test
 - **On Test Failure:** `target/surefire-reports/screenshots/<testName>.png` (captured via `getScreenshotAs` in BaseTest)
 - **Manual Capture:** Use Appium Inspector or `driver.getScreenshotAs(OutputType.FILE)`
 
----
-
-## 🔒 GitHub Repository Setup
-
-### Repo Configuration (Already Done)
-- ✅ Private repository
-- ✅ Branch protection on `main`
-- ✅ Collaborators added
-- ✅ GitHub Issues enabled
-- ✅ CI workflow configured
-
-### Accessing the Repo
-```
-https://github.com/Waleed-Ahmad20/devops-mobile-test-automation
-```
-
----
 
 ## 🧩 Adding New Tests
 
@@ -381,35 +319,6 @@ public class Test011_NewTest extends BaseTest {
 
 3. **Commit and push** via feature branch + PR
 
----
-
-## 🐛 Troubleshooting
-
-### Issue: "Driver is not initialized"
-**Solution:** Ensure DriverFactory.initDriver() is called before tests. Check @BeforeClass in BaseTest.
-
-### Issue: "Element not found"
-**Solution:** Verify locator using Appium Inspector. Update locator in page object.
-
-### Issue: "Connection refused" (Appium server)
-**Solution:** 
-```bash
-# Make sure Appium server is running
-appium --port 4723
-```
-
-### Issue: "ANDROID_HOME not set"
-**Solution:**
-```bash
-# Linux/Mac
-export ANDROID_HOME=~/Library/Android/sdk
-
-# Windows
-set ANDROID_HOME=C:\Users\[YourUsername]\AppData\Local\Android\sdk
-```
-
----
-
 ## 📚 Resources
 
 - [Appium Official Docs](https://appium.io/docs/)
@@ -422,8 +331,8 @@ set ANDROID_HOME=C:\Users\[YourUsername]\AppData\Local\Android\sdk
 
 ## 👥 Team
 
-- **Project Lead:** [Your Name]
-- **QA Engineer:** [Team Member Name]
+- **Member 1:** [Waleed Ahmad]
+- **Member 2:** [Muhammad Abdullah Cheema]
 - **Repository:** Private GitHub repo (branch-protected)
 
 ---
@@ -431,23 +340,6 @@ set ANDROID_HOME=C:\Users\[YourUsername]\AppData\Local\Android\sdk
 ## 📄 License
 
 This project is for educational purposes as part of a DevOps/QA automation assignment.
-
----
-
-## ✅ Checklist for Submission
-
-- [x] Private GitHub repo with collaborators
-- [x] Branch protection and PR reviews enabled
-- [x] 10 independent TestNG tests implemented
-- [x] Page Object Model architecture used
-- [x] GitHub Actions CI pipeline configured
-- [x] Maven project with proper pom.xml
-- [x] testng.xml test suite configuration
-- [x] Comprehensive README with setup instructions
-- [ ] Screenshots of successful test runs (add to docs/screenshots/)
-- [x] CI badge added to repo
-
----
 
 ## 🎯 Quick Reference
 
@@ -463,5 +355,3 @@ This project is for educational purposes as part of a DevOps/QA automation assig
 | View CI logs | GitHub → Actions tab |
 
 ---
-
-**For questions or issues, refer to the GitHub Issues page or contact your team lead.**
