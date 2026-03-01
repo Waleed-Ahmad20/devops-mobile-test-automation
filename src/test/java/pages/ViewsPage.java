@@ -40,7 +40,7 @@ public class ViewsPage {
     }
 
     public void goBack() {
-        driver.navigate().back();
-        System.out.println("✓ Navigated back");
+        driver.findElement(backButton).click();
+        System.out.println("✓ Navigated back via Up button");
     }
 }

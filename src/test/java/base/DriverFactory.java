@@ -13,10 +13,15 @@ public class DriverFactory {
     public static void initDriver(String appPackage, String appActivity, String appPath, String hubUrl)
             throws MalformedURLException {
 
+        String deviceName = System.getProperty("deviceName");
+        if (deviceName == null || deviceName.isEmpty()) {
+            deviceName = "Android Emulator";
+        }
+
         UiAutomator2Options options = new UiAutomator2Options()
                 .setPlatformName("Android")
                 .setAutomationName("UiAutomator2")
-                .setDeviceName("emulator-5554")
+                .setDeviceName(deviceName)
                 .setNewCommandTimeout(Duration.ofSeconds(60));
 
         if (appPath != null && !appPath.isEmpty()) {

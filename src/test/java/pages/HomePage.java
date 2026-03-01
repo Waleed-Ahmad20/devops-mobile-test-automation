@@ -35,6 +35,6 @@ public class HomePage {
     }
 
     public String getHomeScreenTitle() {
-        return driver.getPageSource();
+        return driver.findElement(By.id("android:id/action_bar_title")).getText();
     }
 }

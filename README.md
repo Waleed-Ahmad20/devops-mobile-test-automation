@@ -320,11 +320,11 @@ To capture evidence of successful test runs:
 # Run tests
 mvn test
 
-# Appium automatically saves screenshots to target/surefire-reports/
+# Screenshots on failure are automatically saved to target/surefire-reports/screenshots/
 ```
 
 ### Screenshots Location
-- **After Test Run:** `target/surefire-reports/` (if configured)
+- **On Test Failure:** `target/surefire-reports/screenshots/<testName>.png` (captured via `getScreenshotAs` in BaseTest)
 - **Manual Capture:** Use Appium Inspector or `driver.getScreenshotAs(OutputType.FILE)`
 
 ---
