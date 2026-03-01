@@ -331,8 +331,8 @@ public class Test011_NewTest extends BaseTest {
 
 ## 👥 Team
 
-- **Member 1:** [Waleed Ahmad]
-- **Member 2:** [Muhammad Abdullah Cheema]
+- **Member 1:** Waleed Ahmad
+- **Member 2:** Muhammad Abdullah Cheema
 - **Repository:** Private GitHub repo (branch-protected)
 
 ---
