@@ -1,0 +1,16 @@
+tests/Test009_NavigateToAnimation.class
+pages/HomePage.class
+tests/Test007_RadioButtonSelection.class
+tests/Test008_ViewsMenuItems.class
+pages/TextInputPage.class
+tests/Test005_MultipleCheckboxes.class
+tests/Test002_NavigateToViews.class
+base/DriverFactory.class
+pages/ViewsPage.class
+tests/Test004_CheckboxToggle.class
+tests/Test006_ToggleButtonClick.class
+tests/Test001_HomeScreenVisibility.class
+pages/ControlsPage.class
+tests/Test003_NavigateToControls.class
+tests/Test010_BackNavigation.class
+base/BaseTest.class
