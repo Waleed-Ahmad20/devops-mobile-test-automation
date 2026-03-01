@@ -34,7 +34,7 @@ jobs:
         run: mvn -B clean package -DskipTests
       
       - name: Run unit tests
-        run: mvn -B test -Dtest=** -DfailIfNoTests=false || true
+        run: mvn -B test -DfailIfNoTests=false
       
       - name: Publish test results
         uses: EnricoMi/publish-unit-test-result-action@v2
@@ -61,7 +61,7 @@ jobs:
         run: mvn -B clean compile
       
       - name: Run checkstyle
-        run: mvn -B checkstyle:check || true
+        run: mvn -B checkstyle:check
 
   notify:
     needs: [build-and-test, code-quality]
