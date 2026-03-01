@@ -12,11 +12,11 @@ public class Test007_RadioButtonSelection extends BaseTest {
     public void testRadioButtonSelection() {
         HomePage homePage = new HomePage();
         homePage.openControls();
-        
+
         ControlsPage controlsPage = new ControlsPage();
         controlsPage.selectRadioButton();
-        
-        Assert.assertTrue(controlsPage.isRadioButtonSelected(), 
+
+        Assert.assertTrue(controlsPage.isRadioButtonSelected(),
             "Radio button should be selected after clicking");
         System.out.println("✓ Test 007 PASSED: Radio button selected and verified");
     }

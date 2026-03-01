@@ -12,11 +12,11 @@ public class Test008_ViewsMenuItems extends BaseTest {
     public void testViewsMenuItems() {
         HomePage homePage = new HomePage();
         homePage.openViews();
-        
+
         ViewsPage viewsPage = new ViewsPage();
         int menuItemCount = viewsPage.getMenuItemCount();
-        
-        Assert.assertTrue(menuItemCount > 0, 
+
+        Assert.assertTrue(menuItemCount > 0,
             "Views page should have at least one menu item");
         System.out.println("✓ Test 008 PASSED: Found " + menuItemCount + " menu items");
     }

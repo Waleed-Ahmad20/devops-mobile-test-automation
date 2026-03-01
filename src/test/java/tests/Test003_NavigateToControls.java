@@ -12,9 +12,9 @@ public class Test003_NavigateToControls extends BaseTest {
     public void testNavigateToControls() {
         HomePage homePage = new HomePage();
         homePage.openControls();
-        
+
         ControlsPage controlsPage = new ControlsPage();
-        Assert.assertTrue(controlsPage.isControlsPageLoaded(), 
+        Assert.assertTrue(controlsPage.isControlsPageLoaded(),
             "Controls page should be loaded with checkboxes");
         System.out.println("✓ Test 003 PASSED: Successfully navigated to Controls");
     }

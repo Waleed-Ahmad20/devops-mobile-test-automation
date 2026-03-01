@@ -12,13 +12,13 @@ public class Test006_ToggleButtonClick extends BaseTest {
     public void testToggleButtonClick() {
         HomePage homePage = new HomePage();
         homePage.openControls();
-        
+
         ControlsPage controlsPage = new ControlsPage();
         boolean stateBefore = controlsPage.isToggleButtonOn();
         controlsPage.clickToggleButton();
         boolean stateAfter = controlsPage.isToggleButtonOn();
-        
-        Assert.assertNotEquals(stateAfter, stateBefore, 
+
+        Assert.assertNotEquals(stateAfter, stateBefore,
             "Toggle button state should change after clicking");
         System.out.println("✓ Test 006 PASSED: Toggle button state changed from " + stateBefore + " to " + stateAfter);
     }

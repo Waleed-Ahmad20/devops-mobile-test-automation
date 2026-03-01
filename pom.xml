@@ -9,10 +9,35 @@
     <maven.compiler.target>11</maven.compiler.target>
     <testng.version>7.8.0</testng.version>
     <appium.java.client>8.4.0</appium.java.client>
+    <selenium.version>4.11.0</selenium.version>
     <maven.surefire.plugin.version>3.1.2</maven.surefire.plugin.version>
     <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
+  <!-- Pin Selenium to the version java-client 8.4.0 was compiled against.
+       Without this, transitive resolution upgrades selenium-api/remote-driver
+       to a newer version that removed ContextAware and html5.LocationContext,
+       causing compilation failures. -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-api</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-remote-driver</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-support</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>

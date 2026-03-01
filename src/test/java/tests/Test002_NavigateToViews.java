@@ -12,9 +12,9 @@ public class Test002_NavigateToViews extends BaseTest {
     public void testNavigateToViews() {
         HomePage homePage = new HomePage();
         homePage.openViews();
-        
+
         ViewsPage viewsPage = new ViewsPage();
-        Assert.assertTrue(viewsPage.isViewsPageLoaded(), 
+        Assert.assertTrue(viewsPage.isViewsPageLoaded(),
             "Views page should be loaded with menu items");
         System.out.println("✓ Test 002 PASSED: Successfully navigated to Views");
     }

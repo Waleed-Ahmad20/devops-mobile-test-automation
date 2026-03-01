@@ -2,6 +2,7 @@ package base;
 
 import org.openqa.selenium.OutputType;
 import org.testng.ITestResult;
+import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -22,7 +23,11 @@ public class BaseTest {
             @Optional("io.appium.android.apis.ApiDemos") String appActivity,
             @Optional("") String appPath,
             @Optional("http://127.0.0.1:4723/wd/hub") String hubUrl) throws Exception {
-        DriverFactory.initDriver(appPackage, appActivity, appPath, hubUrl);
+        try {
+            DriverFactory.initDriver(appPackage, appActivity, appPath, hubUrl);
+        } catch (Exception e) {
+            throw new SkipException("Appium server not available, skipping tests: " + e.getMessage());
+        }
     }
 
     @AfterMethod(alwaysRun = true)
@@ -47,3 +52,4 @@ public class BaseTest {
         DriverFactory.quitDriver();
     }
 }
+
